@@ -19,6 +19,10 @@ public class LobbyNetwork : MonoBehaviour
 
     private void OnJoinedLobby(){
         print("Joined lobby.");
+        if (!PhotonNetwork.inRoom) {                                // This would prevent to having weird issues basically.
+            MainCanvasManager.Instance.LobbyCanvas.transform.SetAsLastSibling();                        // Whenever we are going to join the lobby it is going to show the lobby panel over the top.
+        }
+
     }
 
 }
