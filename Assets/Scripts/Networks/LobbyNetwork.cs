@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LobbyNetwork : MonoBehaviour
 {
-
-    // Use this for initialization
     private void Start()
     {
         print("Connecting to server..");
