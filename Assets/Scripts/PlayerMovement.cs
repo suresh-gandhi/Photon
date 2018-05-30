@@ -10,6 +10,8 @@ public class PlayerMovement : Photon.MonoBehaviour {
 
     private Quaternion targetRotation;
 
+    public float Health;            // It is public because 1. I can assign it from anywhere 2. We can see it in the inspector
+
     private void Awake() {
         PhotonView = GetComponent<PhotonView>();
     }
@@ -31,8 +33,9 @@ public class PlayerMovement : Photon.MonoBehaviour {
         {             // If we are the one who is writing the data
             stream.SendNext(transform.position);                    // Keep care of order here Ok!
             stream.SendNext(transform.rotation);
+            // We can do it for the health as well if we follow the approach other way round.
         }
-        else {        // 
+        else {        
             targetPosition = (Vector3)stream.ReceiveNext();         // This will pull the first entry out from the stream
             targetRotation = (Quaternion)stream.ReceiveNext(); 
         }
