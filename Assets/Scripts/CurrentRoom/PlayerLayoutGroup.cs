@@ -22,6 +22,12 @@ public class PlayerLayoutGroup : MonoBehaviour {
 
     // Called by photon whenever you join a room
     private void OnJoinedRoom() {
+
+        foreach (Transform child in transform)              // This is done to prevent the duplicates.
+        {
+            Destroy(child.gameObject);
+        }
+
         MainCanvasManager.Instance.CurrentRoomCanvas.transform.SetAsLastSibling();
 
         PhotonPlayer[] photonPlayers = PhotonNetwork.playerList;     // This will get all the list of the current players in the room you resided.
@@ -66,7 +72,7 @@ public class PlayerLayoutGroup : MonoBehaviour {
     }
 
     public void OnClickRoomState() {
-
+            
         if (!PhotonNetwork.isMasterClient) {
             return;
         }

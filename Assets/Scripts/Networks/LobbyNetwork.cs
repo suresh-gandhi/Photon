@@ -10,13 +10,16 @@ public class LobbyNetwork : MonoBehaviour
         PhotonNetwork.ConnectUsingSettings("0.0.0");
     }
 
+    // Called by photon
     private void OnConnectedToMaster() {
         print("Connected to the master");
+        PhotonNetwork.automaticallySyncScene = false;               // If this is true whenever we join a room it will automatically sync us to whichever scene that the master client is currently on.
         PhotonNetwork.playerName = PlayerNetwork.Instance.PlayerName;
 
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
+    // Called by photon
     private void OnJoinedLobby(){
         print("Joined lobby.");
         if (!PhotonNetwork.inRoom) {                                // This would prevent to having weird issues basically.

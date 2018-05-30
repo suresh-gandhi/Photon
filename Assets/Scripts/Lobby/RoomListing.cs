@@ -30,7 +30,7 @@ public class RoomListing : MonoBehaviour {
         button.onClick.AddListener(() => lobbyCanvas.OnClickJoinRoom(RoomNameText.text));
     }
 
-    private void OnDestroy() {
+    private void OnDestroy() {  
         Button button = GetComponent<Button>();
         button.onClick.RemoveAllListeners();
     }
